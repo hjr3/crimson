@@ -113,18 +113,17 @@ abstract class Crimson_Model_Abstract
 
     /**
      * Convenience method to create a result with data.
-     * 
+     *
+     * The caller only need to provide data if there is a message besides
+     * "success" that needs to be delivered to the front-end.
+     *
      * @param array $data Key/value pairs of data.
      * @final
      * @access protected
      * @return object A Crimson_Result object.
      */
-    final protected function _success($data)
+    final protected function _success($data=array())
     {
-        if (!isset($data) || !is_array($data)) {
-            throw new Exception('Invalid data parameter for Crimson_Result');
-        }
-
         $result = new Crimson_Result();
         $result->addData($data);
 

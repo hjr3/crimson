@@ -37,28 +37,15 @@ class Crimson_Pgsql
      * 
      * Store database connection information.
      *
-     * @param array $config database connection information
+     * @param mixed $dsn database connection information
      */
-    function __construct($config)
+    function __construct($dsn)
     {
-        $this->_dsn = $config;
-    }
+        if (!isset($dsn)) {
+            throw new Exception('Missing database connection informatin.');
+        }
 
-    /**
-     * Create a DSN from configuration paramters.
-     * 
-     * @access private
-     * @return string A PostgreSQL PDO connection string.
-     */
-    private function _createDsn()
-    {
-        $dsn = sprintf('host=%s dbname=%s user=%s password=%s',
-            $this->_dsn['host'],
-            $this->_dsn['dbname'],
-            $this->_dsn['user'],
-            $this->_dsn['password']);
-
-        return $dsn;
+        $this->_dsn = $dsn;
     }
 
     /**
@@ -75,7 +62,7 @@ class Crimson_Pgsql
             return;
         }
 
-        $this->_dbh = New PDO($this->_createDsn());
+        $this->_dbh = New PDO($this->_dsn);
         $this->_dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
