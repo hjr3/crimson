@@ -14,7 +14,7 @@
  * @author Herman Radtke 
  * @license PHP Version 3.0 {@link http://www.php.net/license/3_0.txt}
  */
-class Crimson_Db
+class Crimson_Pgsql
 {
     /**
      * Database connection handler.
@@ -48,7 +48,7 @@ class Crimson_Db
      * Create a DSN from configuration paramters.
      * 
      * @access private
-     * @return void
+     * @return string A PostgreSQL PDO connection string.
      */
     private function _createDsn()
     {
@@ -90,8 +90,8 @@ class Crimson_Db
      * Good: SELECT * FROM foo WHERE bar = :bar
      * Bad: SELECT * FROM foo WHERE bar = ?
      * 
-     * @param string $sql
-     * @param array @bindings
+     * @param string $sql Query string.
+     * @param array @bindings Values to bind to the query string.
      * @return PDOStatement A statement handle with a result set
      */
     private function _pquery($sql, $bindings)
@@ -106,8 +106,8 @@ class Crimson_Db
     /**
      * Execute an sql statement and return the number of affected rows.
      *
-     * @param string $sql
-     * @param array $bindings OPTIONAL
+     * @param string $sql Query string.
+     * @param array $bindings Values to bind to the query string.
      * @return integer The number of rows.
      */
     final public function query($sql, $bindings=array())
@@ -121,8 +121,10 @@ class Crimson_Db
      * 
      * The row data is indexed by column name.
      * 
-     * @param string $sql
-     * @param array	$bindings OPTIONAL
+     * @param string $sql Query string.
+     * @param array	$bindings Values to bind to the query string.
+     * @final
+     * @access public
      * @return array Associative array of results
      */
     final public function getAssocAll($sql, $bindings=array())
@@ -136,8 +138,10 @@ class Crimson_Db
      * 
      * The row data is indexed by column name.
      * 
-     * @param string $sql
-     * @param array	$bindings OPTIONAL
+     * @param string $sql Query string.
+     * @param array	$bindings Values to bind to the query string.
+     * @final
+     * @access public
      * @return array Associative array of results
      */
     final public function getAssocRow($sql, $bindings=array())
@@ -151,6 +155,8 @@ class Crimson_Db
      * record
      * 
      * @param integer $code error code from a sql query
+     * @final
+     * @access public
      * @return boolean true if the code is a duplicate error code, else false 
      */
     final public function isDuplicateKeyError($code)

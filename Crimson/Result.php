@@ -1,41 +1,56 @@
 <?php
 /**
- * Class to format responses based on view requirements.
+ * Class to format responses based on ExtJs json format.
  *
  * The data and errors members are split out so the application can naively
- * add errors and messages to this object.  The existence of any values in 
- * errors will force the response to act like an error.
+ * add errors and messages to this object.  The existence of any errors will 
+ * force the response to act like an error.
  * 
- * Creating a response object and passing it the view is the easiest way to 
+ * A response object containing either data or errors should be returned to 
+ * the contrller from a model.
+ * 
+ * @package Crimson
+ * @copyright 2009 Herman Radtke
+ * @author Herman Radtke 
+ * @license PHP Version 3.0 {@link http://www.php.net/license/3_0.txt}
  */
 class Crimson_Result
 {
     /**
-     * Error flag
-     * 
-     * @var boolean
-     */
-    private $_isError;
-
-    /**
-     * Data to send back to the view
+     * Data to send back to the view.
      * 
      * @var array
+     * @access private
      */
     private $_data;
 
     /**
-     * Errors to send back to the view
+     * Errors to send back to the view.
      * 
      * @var array
+     * @access private
      */
     private $_errors;
 
+    /**
+     * Initialize private error and data members to arrays.
+     * 
+     * @access public
+     * @return void
+     */
     public function __construct()
     {
-        $this->_isError = 0;
+        $this->_data = array();
+        $this->_errors = array();
     }
 
+    /**
+     * Add key/value pairs of data.
+     * 
+     * @param array $data Data to be sent to the view.
+     * @access public
+     * @return void
+     */
     public function addData($data)
     {
         if (is_array($data)) {
@@ -43,6 +58,13 @@ class Crimson_Result
         }
     }
 
+    /**
+     * Add key/value pairs of error messages.
+     * 
+     * @param array $errors Error messages to be sent to the view.
+     * @access public
+     * @return void
+     */
     public function addError($errors)
     {
         if (is_array($errors)) {
@@ -50,18 +72,25 @@ class Crimson_Result
         }
     }
 
+    /**
+     * Format results into a json string that complies with ExtJs format.
+     * 
+     * @access public
+     * @return string A json string of results.
+     */
     public function __toString()
-    {	
-        $response = array('success' => !$this->isError());
+    {
+        $err_flag = count($this->_errors);
+        $response = array('success' => !$err_flag);
 
-        if (isset($this->_errors)) {
-            if (count($this->_errors)) {
-                $response['errors'] = $this->_errors;
-            }
+        if ($err_flag) {
+            $response['errors'] = $this->_errors;
         } else {
-            if (count($this->_data)) {
                 $response['data'] = $this->_data;
-            }
+        }
+
+        if (!function_exists('json_encode')) {
+            throw new Exception('The json_encode function does not exist.');
         }
 
         return json_encode($response);
