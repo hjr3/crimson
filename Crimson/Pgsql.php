@@ -39,13 +39,36 @@ class Crimson_Pgsql
      *
      * @param mixed $dsn database connection information
      */
-    function __construct($dsn)
+    public function __construct(array $info)
     {
         if (!isset($dsn)) {
-            throw new Exception('Missing database connection informatin.');
+            throw new Exception('Missing database connection information.');
         }
 
-        $this->_dsn = $dsn;
+        $this->_dsn =$this->_createDsn($info);
+    }
+
+    /**
+     * Create a PDO compatible dsn from array information.
+     * 
+     * @param array $info Database connection information;
+     * @access private
+     * @return string dsn connection string
+     */
+    private function _createDsn(array $info)
+    {
+        if (!isset($info['host']) || 
+            !isset($info['dbname']) || 
+            !isset($info['user']) || 
+            !isset($info['password'])) {
+
+                throw new Exception('Invalid database connection information');
+        }
+
+        $dsn = sprintf('pgsql:host=%s dbname=%s user=%s password=%s', 
+            $info['host'], $info['dbname'], $info['user'], $info['password']);
+
+        return $dsn;
     }
 
     /**
