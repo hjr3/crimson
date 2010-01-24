@@ -1,0 +1,9 @@
+Crimson_Memcache: A pecl/memcached backend for Zend Framework
+=============================================================
+
+Crimson_Memcache is a replacement to the Zend_Cache_Backend_Memcache class.
+It can be used wherever Zend_Cache_Backend_Memcache is able to be used.
+
+The Crimson_Memcache class provides a new public method: getCacheInstance.
+This function allows the user to extract the internal Memcached instance being
+used so they can use methods specific to memcached (such as cas and callbacks).

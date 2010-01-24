@@ -1,5 +1,16 @@
 <?php
 /**
+ * Crimson - component library
+ *
+ * @category Crimson
+ * @package Crimson_Nemcache
+ * @subpackage Test
+ * @copyright 2010 Herman J. Radtke III
+ * @author Herman J. Radtke III <hermanradtke@gmail.com>
+ * @license New BSD {@link http://www.opensource.org/licenses/bsd-license.php}
+ */
+
+/**
  * Zend Framework
  *
  * LICENSE
@@ -24,12 +35,12 @@
  * Zend_Cache
  */
 require_once 'Zend/Cache.php';
-require_once 'Zend/Cache/Backend/Memcache.php';
+require_once 'Crimson/Memcache.php';
 
 /**
  * Common tests for backends
  */
-require_once 'CommonExtendedBackendTest.php';
+require_once 'Zend/Cache/CommonExtendedBackendTest.php';
 
 /**
  * PHPUnit test case
@@ -52,7 +63,7 @@ class Crimson_MemcachedTest extends Zend_Cache_CommonExtendedBackendTest {
  
     public function __construct($name = null, array $data = array(), $dataName = '')
     {
-        parent::__construct('Zend_Cache_Backend_Memcache', $data, $dataName);
+        parent::__construct('Crimson_Memcache', $data, $dataName);
     }
        
     public function setUp($notag = true)
@@ -65,7 +76,7 @@ class Crimson_MemcachedTest extends Zend_Cache_CommonExtendedBackendTest {
             'servers' => array(0 => $server),
             'persistent' =>  'zend-test-persistent'
         );
-        $this->_instance = new Zend_Cache_Backend_Memcache($options);
+        $this->_instance = new Crimson_Memcache($options);
         parent::setUp($notag);    
     }
     
@@ -79,7 +90,7 @@ class Crimson_MemcachedTest extends Zend_Cache_CommonExtendedBackendTest {
     
     public function testConstructorCorrectCall()
     {
-        $test = new Zend_Cache_Backend_Memcache(); 
+        $test = new Crimson_Memcache(); 
     }
     
     public function testCleanModeOld() 
@@ -122,7 +133,7 @@ class Crimson_MemcachedTest extends Zend_Cache_CommonExtendedBackendTest {
         $options = array(
             'servers' => $server
         );
-        $this->_instance = new Zend_Cache_Backend_Memcache($options);
+        $this->_instance = new Crimson_Memcache($options);
         $this->testGetWithAnExistingCacheIdAndUTFCharacters();
     }
     

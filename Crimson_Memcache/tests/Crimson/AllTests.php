@@ -11,14 +11,14 @@
  */
 
 if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'AllTests::main');
+    define('PHPUnit_MAIN_METHOD', 'Crimson_AllTests::main');
 }
 
-require_once dirname(__FILE__) . '/TestHelper.php';
+require_once dirname(__FILE__) . '/../TestHelper.php';
 
-require_once 'Crimson/AllTests.php';
+require_once 'Crimson/MemcacheTest.php';
 
-class AllTests
+class Crimson_AllTests
 {
     public static function main()
     {
@@ -27,14 +27,14 @@ class AllTests
 
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Crimson');
+        $suite = new PHPUnit_Framework_TestSuite('Crimson - All Tests');
 
-        $suite->addTest(Crimson_AllTests::suite());
+        $suite->addTestSuite('Crimson_MemcachedTest');
 
         return $suite;
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'AllTests::main') {
+if (PHPUnit_MAIN_METHOD == 'Crimson_AllTests::main') {
     AllTests::main();
 }
