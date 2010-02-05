@@ -1,0 +1,12 @@
+[04-Feb-2010 16:20:16] i hope i get handled Stack Trace:
+[04-Feb-2010 16:20:16] PHP 0. testHandle ?:?
+[04-Feb-2010 16:20:16] PHP 1. invokeArgs /usr/local/lib/php/PHPUnit/Framework/TestCase.php:822
+[04-Feb-2010 16:20:16] PHP 2. runTest /usr/local/lib/php/PHPUnit/Framework/TestCase.php:705
+[04-Feb-2010 16:20:16] PHP 3. runBare /usr/local/lib/php/PHPUnit/Framework/TestResult.php:686
+[04-Feb-2010 16:20:16] PHP 4. run /usr/local/lib/php/PHPUnit/Framework/TestCase.php:652
+[04-Feb-2010 16:20:16] PHP 5. run /usr/local/lib/php/PHPUnit/Framework/TestSuite.php:756
+[04-Feb-2010 16:20:16] PHP 6. runTest /usr/local/lib/php/PHPUnit/Framework/TestSuite.php:731
+[04-Feb-2010 16:20:16] PHP 7. run /usr/local/lib/php/PHPUnit/TextUI/TestRunner.php:349
+[04-Feb-2010 16:20:16] PHP 8. doRun /usr/local/lib/php/PHPUnit/TextUI/Command.php:213
+[04-Feb-2010 16:20:16] PHP 9. run /usr/local/lib/php/PHPUnit/TextUI/Command.php:146
+[04-Feb-2010 16:20:16] PHP 10. main /usr/local/bin/phpunit:54
