@@ -4,7 +4,6 @@
  *
  * @category Crimson
  * @package Crimson_Nemcache
- * @subpackage Test
  * @copyright 2010 Herman J. Radtke III
  * @author Herman J. Radtke III <hermanradtke@gmail.com>
  * @license New BSD {@link http://www.opensource.org/licenses/bsd-license.php}
@@ -54,8 +53,8 @@ class Crimson_Memcache extends Zend_Cache_Backend implements Zend_Cache_Backend_
     /**
      * Log message
      */
-    const TAGS_UNSUPPORTED_BY_CLEAN_OF_MEMCACHED_BACKEND = 'Zend_Cache_Backend_Memcache::clean() : tags are unsupported by the Memcached backend';
-    const TAGS_UNSUPPORTED_BY_SAVE_OF_MEMCACHED_BACKEND =  'Zend_Cache_Backend_Memcache::save() : tags are unsupported by the Memcached backend';
+    const TAGS_UNSUPPORTED_BY_CLEAN_OF_MEMCACHED_BACKEND = 'Crimson_Memcache::clean() : tags are unsupported by the Memcached backend';
+    const TAGS_UNSUPPORTED_BY_SAVE_OF_MEMCACHED_BACKEND =  'Crimson_Memcache::save() : tags are unsupported by the Memcached backend';
 
     /**
      * Available options
@@ -144,13 +143,20 @@ class Crimson_Memcache extends Zend_Cache_Backend implements Zend_Cache_Backend_
             if (!array_key_exists('weight', $server)) {
                 $server['weight'] = self::DEFAULT_WEIGHT;
             }
-        }
 
-        $this->_memcache->addServers($this->_options['servers']);
+            $this->_memcache->addServer($server);
+        }
     }
 
     /**
      * Return the instance of memcache being used
+     *
+     * This allows an application to get the memcache instance via
+     * $cache->getBackend()->getInstance().  The application can then
+     * use the specific Memcached class methods, such as class.
+     *
+     * WARNING: Zend wraps their keys in an array with extra metadata.  Be
+     * careful not to mix and match vanilla Memcache with Crimson_Memcache.
      */
     public function getCacheInstance()
     {
@@ -252,7 +258,7 @@ class Crimson_Memcache extends Zend_Cache_Backend implements Zend_Cache_Backend_
                 return $this->_memcache->flush();
                 break;
             case Zend_Cache::CLEANING_MODE_OLD:
-                $this->_log("Zend_Cache_Backend_Memcached::clean() : CLEANING_MODE_OLD is unsupported by the Memcached backend");
+                $this->_log("Crimson_Memcached::clean() : CLEANING_MODE_OLD is unsupported by the Memcached backend");
                 break;
             case Zend_Cache::CLEANING_MODE_MATCHING_TAG:
             case Zend_Cache::CLEANING_MODE_NOT_MATCHING_TAG:
@@ -303,7 +309,7 @@ class Crimson_Memcache extends Zend_Cache_Backend implements Zend_Cache_Backend_
      */
     public function getIds()
     {
-        $this->_log("Zend_Cache_Backend_Memcached::save() : getting the list of cache ids is unsupported by the Memcache backend");
+        $this->_log("Crimson_Memcached::save() : getting the list of cache ids is unsupported by the Memcache backend");
         return array();
     }
 
