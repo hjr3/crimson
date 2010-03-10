@@ -1,0 +1,20 @@
+Crimson_Json: An OO implementation of serializing objects into JSON
+=============================================================
+
+The Crimson_Json is an object orienteded implementation for json_encode and json_decode.  The added bonus is that Crimson_Json honors the Crimson_Encodable interface.  This interface works very similiar to the Serializable interface in PHP core: Crimson_Json will call the respective encode/decode method of a class that implements Crimson_Encodable instead of calling the core json_encode/json_decode functions.
+
+Example:
+class Foo implements Crimson_Encodable
+{
+    protected $_data = array('hidden' => 'data');
+
+    public function encode()
+    {
+        return json_encode($this->_data);
+    }
+
+    public function json_decode($value)
+    {
+        $this->_data = (array) json_decode($value);
+    }
+}
