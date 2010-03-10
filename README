@@ -1,0 +1,2 @@
+My personal component framework.  Used for proof of concepts, discussion and my personal projects.  Each component is seperate.  This is to provide loose coupling.  However, some of the components are dependent on Zend Framework.  Every component has the same directory structure so they can be used in any combination.  
+I try my best to make sure every component is bug free by providing unit tests with every component.  However, I provide no guarantee that the component will work in your environment.
