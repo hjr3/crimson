@@ -1,0 +1,4 @@
+Crimson_Url: A set of URL utilities
+=============================================================
+
+The Crimson_Url class provides a set of factory methods that take advantage of PHP5.3's new anonymous function and closure features.  This class is implemented in a way that is indepdent of the view.  This allows the code to be accessible to the service layer without compromising the functionality available to the view.
