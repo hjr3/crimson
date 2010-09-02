@@ -8,7 +8,10 @@
  * @author Herman J. Radtke III <hermanradtke@gmail.com>
  * @license New BSD {@link http://www.opensource.org/licenses/bsd-license.php}
  */
-class Crimson_Json
+
+namespace crimson;
+
+class Json
 {
     /**
      * Serialize a value into JSON.
@@ -22,7 +25,7 @@ class Crimson_Json
      */
     public static function encode($value)
     {
-        if ($value instanceof Crimson_Encodable) {
+        if ($value instanceof Encodable) {
             return $value->encode();
         }
 
@@ -37,7 +40,7 @@ class Crimson_Json
      */
     public static function decode($value)
     {
-        if ($value instanceof Crimson_Encodable) {
+        if ($value instanceof Encodable) {
             return $value->decode($value);
         }
 

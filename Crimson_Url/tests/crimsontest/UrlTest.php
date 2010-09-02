@@ -3,23 +3,20 @@
  * Crimson - component library
  *
  * @category Crimson
- * @package Crimson_Url
+ * @package \crimson\Url
  * @subpackage Test
  * @copyright 2010 Herman J. Radtke III
  * @author Herman J. Radtke III <hermanradtke@gmail.com>
  * @license New BSD {@link http://www.opensource.org/licenses/bsd-license.php}
  */
 
-/**
- * PHPUnit test case
- */
-require_once 'PHPUnit/Framework/TestCase.php';
+namespace crimsontest;
 
-require_once dirname(__FILE__) . '/../TestHelper.php';
+require_once __DIR__ . '/../TestHelper.php';
 
-require_once 'Crimson/Url.php';
+require_once 'crimson/Url.php';
 
-class Crimson_UrlTest extends PHPUnit_Framework_TestCase
+class UrlTest extends \PHPUnit_Framework_TestCase
 {
     public function testUrl()
     {
@@ -28,7 +25,7 @@ class Crimson_UrlTest extends PHPUnit_Framework_TestCase
 
         $expected = "{$baseUrl}{$path}";
 
-        $url = Crimson_Url::absolute($baseUrl);
+        $url = \crimson\Url::absolute($baseUrl);
         $this->assertEquals($expected, $url($path));
     }
 
@@ -39,7 +36,7 @@ class Crimson_UrlTest extends PHPUnit_Framework_TestCase
 
         $expected = "{$baseUrl}{$path}";
 
-        $url = Crimson_Url::absolute($baseUrl);
+        $url = \crimson\Url::absolute($baseUrl);
         $this->assertEquals($expected, $url($path));
 
         $path = '/another/web/path';
@@ -56,7 +53,7 @@ class Crimson_UrlTest extends PHPUnit_Framework_TestCase
 
         $expected1 = "{$baseUrl}{$path}";
 
-        $url1 = Crimson_Url::absolute($baseUrl);
+        $url1 = \crimson\Url::absolute($baseUrl);
         $this->assertEquals($expected1, $url1($path));
 
         $baseUrl = 'http://foo.example.com';
@@ -64,7 +61,7 @@ class Crimson_UrlTest extends PHPUnit_Framework_TestCase
 
         $expected2 = "{$baseUrl}{$path}";
 
-        $url2 = Crimson_Url::absolute($baseUrl);
+        $url2 = \crimson\Url::absolute($baseUrl);
         $this->assertEquals($expected2, $url2($path));
     }
 
@@ -78,7 +75,7 @@ class Crimson_UrlTest extends PHPUnit_Framework_TestCase
         $expected1 = "http://{$sub}1.{$tld}{$path}";
         $expected2 = "http://{$sub}2.{$tld}{$path}";
 
-        $url = Crimson_Url::rotate($sub, $tld, $rotations);
+        $url = \crimson\Url::rotate($sub, $tld, $rotations);
 
         $this->assertEquals($expected1, $url($path));
         $this->assertEquals($expected2, $url($path));
@@ -95,7 +92,7 @@ class Crimson_UrlTest extends PHPUnit_Framework_TestCase
 
         $expected = "{$protocol}://{$sub}1.{$tld}{$path}";
 
-        $url = Crimson_Url::rotate($sub, $tld, $rotations, $protocol);
+        $url = \crimson\Url::rotate($sub, $tld, $rotations, $protocol);
 
         $this->assertEquals($expected, $url($path));
     }

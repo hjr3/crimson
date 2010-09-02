@@ -10,24 +10,22 @@
  * @license New BSD {@link http://www.opensource.org/licenses/bsd-license.php}
  */
 
-/**
- * PHPUnit test case
- */
-require_once 'PHPUnit/Framework/TestCase.php';
 
-require_once dirname(__FILE__) . '/../TestHelper.php';
+namespace crimsontest;
 
-require_once 'Crimson/ExceptionHandler.php';
+require_once __DIR__ . '/../TestHelper.php';
+
+require_once 'crimson/ExceptionHandler.php';
 
 function dummy_handler($e) {}
 
-class Crimson_ExceptionHandlerTest extends PHPUnit_Framework_TestCase
+class ExceptionHandlerTest extends \PHPUnit_Framework_TestCase
 {
     private $ExceptionHandler;
 
     public function setUp()
     {
-        $this->ExceptionHandler = new Crimson_ExceptionHandler;
+        $this->ExceptionHandler = new \crimson\ExceptionHandler;
     }
 
     public function tearDown()
@@ -38,15 +36,16 @@ class Crimson_ExceptionHandlerTest extends PHPUnit_Framework_TestCase
     public function testConstructor()
     {
         // best way i could see to determine the current exception handler
-        $handler = set_exception_handler('dummy_handler');
+        // was to set a fake exception handler and use the return value
+        $handler = set_exception_handler('\crimsontest\dummy_handler');
 
-        $this->assertTrue($handler[0] instanceof Crimson_ExceptionHandler);
+        $this->assertTrue($handler[0] instanceof \crimson\ExceptionHandler);
         $this->assertEquals('handle', $handler[1]);
     }
 
     public function testHandle()
     {
-        $logFile = dirname(__FILE__) . '/_files/test.log';
+        $logFile = __DIR__ . '/_files/test.log';
         if (file_exists($logFile)) {
             if (!unlink($logFile)) {
                 $this->fail('Unable to remove logfile');
@@ -56,8 +55,8 @@ class Crimson_ExceptionHandlerTest extends PHPUnit_Framework_TestCase
         ini_set('error_log', $logFile);
 
         try {
-            throw new Exception('i hope i get handled');
-        } catch (Exception $e) {
+            throw new \Exception('i hope i get handled');
+        } catch (\Exception $e) {
             $this->ExceptionHandler->handle($e);
         }
 

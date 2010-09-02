@@ -10,17 +10,14 @@
  * @license New BSD {@link http://www.opensource.org/licenses/bsd-license.php}
  */
 
-/**
- * PHPUnit test case
- */
-require_once 'PHPUnit/Framework/TestCase.php';
+namespace crimsontest;
 
 require_once dirname(__FILE__) . '/../TestHelper.php';
 
-require_once 'Crimson/Json.php';
-require_once 'Crimson/Encodable.php';
+require_once 'crimson/Json.php';
+require_once 'crimson/Encodable.php';
 
-class Crimson_JsonTest extends PHPUnit_Framework_TestCase
+class JsonTest extends \PHPUnit_Framework_TestCase
 {
     public function testEncodeScalars()
     {
@@ -33,7 +30,7 @@ class Crimson_JsonTest extends PHPUnit_Framework_TestCase
 
         foreach($scalars as $scalar) {
             list($given, $expected) = $scalar;
-            $this->assertEquals($expected, Crimson_Json::encode($given));
+            $this->assertEquals($expected, \crimson\Json::encode($given));
         }
     }
 
@@ -43,7 +40,7 @@ class Crimson_JsonTest extends PHPUnit_Framework_TestCase
 
         $expected = '[1,2,3,4,5]';
 
-        $this->assertEquals($expected, Crimson_Json::encode($given));
+        $this->assertEquals($expected, \crimson\Json::encode($given));
 
         $given = array(
             'a' => 1,
@@ -55,31 +52,31 @@ class Crimson_JsonTest extends PHPUnit_Framework_TestCase
 
         $expected = '{"a":1,"0":5,"1":false,"2":"trouble at mill","foo":"bar"}';
 
-        $this->assertEquals($expected, Crimson_Json::encode($given));
+        $this->assertEquals($expected, \crimson\Json::encode($given));
     }
 
     public function testEncodeStdClass()
     {
-        $given = new stdClass;
+        $given = new \stdClass;
         $given->p = 'hp';
         $given->x = 1;
         $given->status = false;
 
         $expected = '{"p":"hp","x":1,"status":false}';
 
-        $this->assertEquals($expected, Crimson_Json::encode($given));
+        $this->assertEquals($expected, \crimson\Json::encode($given));
     }
 
     public function testEncodeEncodable()
     {
         $expected = '{"inside":"encode"}';
-        $c = $this->getMock('Crimson_Encodable');
+        $c = $this->getMock('\crimson\Encodable');
 
         $c->expects($this->once())
             ->method('encode')
             ->will($this->returnValue($expected));
 
-        $this->assertEquals($expected, Crimson_Json::encode($c));
+        $this->assertEquals($expected, \crimson\Json::encode($c));
     }
 
     public function testDecodeScalars()
@@ -93,7 +90,7 @@ class Crimson_JsonTest extends PHPUnit_Framework_TestCase
 
         foreach($scalars as $scalar) {
             list($given, $expected) = $scalar;
-            $this->assertEquals($expected, Crimson_Json::decode($given));
+            $this->assertEquals($expected, \crimson\Json::decode($given));
         }
     }
 
@@ -103,11 +100,11 @@ class Crimson_JsonTest extends PHPUnit_Framework_TestCase
 
         $expected = array(1,2,3,4,5);
 
-        $this->assertEquals($expected, Crimson_Json::decode($given));
+        $this->assertEquals($expected, \crimson\Json::decode($given));
 
         $given = '{"a":1,"0":5,"1":false,"2":"trouble at mill","foo":"bar"}';
 
-        $result = Crimson_Json::decode($given);
+        $result = \crimson\Json::decode($given);
 
         $this->assertAttributeEquals(1, 'a', $result);
         $this->assertAttributeEquals(5, '0', $result);
@@ -120,7 +117,7 @@ class Crimson_JsonTest extends PHPUnit_Framework_TestCase
     {
         $given = '{"p":"hp","x":1,"status":false}';
 
-        $result = Crimson_Json::decode($given);
+        $result = \crimson\Json::decode($given);
 
         $this->assertAttributeEquals('hp', 'p', $result);
         $this->assertAttributeEquals(1, 'x', $result);
@@ -135,12 +132,12 @@ class Crimson_JsonTest extends PHPUnit_Framework_TestCase
     public function testDecodeEncodable()
     {
         $expected = true;
-        $c = $this->getMock('Crimson_Encodable');
+        $c = $this->getMock('\crimson\Encodable');
 
         $c->expects($this->once())
             ->method('decode')
             ->will($this->returnValue($expected));
 
-        $this->assertEquals($expected, Crimson_Json::decode($c));
+        $this->assertEquals($expected, \crimson\Json::decode($c));
     }
 } 

@@ -10,31 +10,33 @@
  * @license New BSD {@link http://www.opensource.org/licenses/bsd-license.php}
  */
 
+namespace crimsontest;
+
 if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'AllTests::main');
+    define('PHPUnit_MAIN_METHOD', '\crimsontest\AllTests::main');
 }
 
-require_once dirname(__FILE__) . '/TestHelper.php';
+require_once __DIR__ . '/../TestHelper.php';
 
-require_once 'Crimson/AllTests.php';
+require_once __DIR__ . '/crimsontest/UrlTest.php';
 
 class AllTests
 {
     public static function main()
     {
-        PHPUnit_TextUI_TestRunner::run(self::suite(), array());
+        \PHPUnit_TextUI_TestRunner::run(self::suite(), array());
     }
 
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Crimson');
+        $suite = new \PHPUnit_Framework_TestSuite('Crimson - All Tests');
 
-        $suite->addTest(Crimson_AllTests::suite());
+        $suite->addTestSuite('\crimsontest\UrlTest');
 
         return $suite;
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'AllTests::main') {
+if (PHPUnit_MAIN_METHOD == '\crimsontest\AllTests::main') {
     AllTests::main();
 }

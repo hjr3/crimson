@@ -8,7 +8,10 @@
  * @author Herman J. Radtke III <hermanradtke@gmail.com>
  * @license New BSD {@link http://www.opensource.org/licenses/bsd-license.php}
  */
-class Crimson_ExceptionHandler
+
+namespace crimson;
+
+class ExceptionHandler
 {
     /**
      * Register this class as the exception handler
@@ -28,7 +31,7 @@ class Crimson_ExceptionHandler
      * 
      * @param Exception $e Uncaught exception object.
      */
-    public function handle(Exception $e)
+    public function handle(\Exception $e)
     {
         $m = "{$e->getMessage()} Stack Trace:";
         error_log($m);

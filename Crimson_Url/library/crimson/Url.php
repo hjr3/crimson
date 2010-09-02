@@ -9,11 +9,12 @@
  * @license New BSD {@link http://www.opensource.org/licenses/bsd-license.php}
  */
 
+namespace crimson;
 
 /**
  * A set of utilities to for dealing with URL's.
  */
-class Crimson_Url
+class Url
 {
     /**
      * Creates a lambda function that prefixes a relative url with the specified host
