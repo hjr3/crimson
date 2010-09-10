@@ -58,4 +58,18 @@ class Url
             return "{$protocol}://{$subdomain}{$current}.{$host}{$path}";
         };
     }
+
+    /**
+     * Create a function to append a version query string to a url
+     * 
+     * @param string $host Host to prefix the relative url
+     * @param string $version Version to append to the relative url
+     * @return function
+     */
+    public static function version($host, $version)
+    {
+        return function($path) use ($host, $version) {
+            return "{$host}{$path}?{$version}";
+        };
+    }
 }

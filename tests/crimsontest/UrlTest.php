@@ -96,4 +96,16 @@ class UrlTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $url($path));
     }
+
+    public function testVersionUrl()
+    {
+        $baseUrl = 'http://www.example.com';
+        $path = '/some/web/path';
+        $version =  '1.0.1';
+
+        $expected = "{$baseUrl}{$path}?{$version}";
+
+        $url = \crimson\Url::version($baseUrl, $version);
+        $this->assertEquals($expected, $url($path));
+    }
 } 
