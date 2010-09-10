@@ -1,4 +1,0 @@
-Crimson_Autoloader: A namespace autoloader
-=============================================================
-
-A very simple namespace autoloader.  This autoloader assumes that the include path is properly set and that the namespace mirrors the directory structure.  Simply register the autoloader with: spl_autoload_register('\\crimson\\autoload');

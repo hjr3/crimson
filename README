@@ -1,2 +1,56 @@
 My personal component framework.  Used for proof of concepts, discussion and my personal projects.  Each component is seperate.  This is to provide loose coupling.  However, some of the components are dependent on Zend Framework.  Every component has the same directory structure so they can be used in any combination.  
 I try my best to make sure every component is bug free by providing unit tests with every component.  However, I provide no guarantee that the component will work in your environment.
+
+
+
+Crimson_Autoloader: A namespace autoloader
+=============================================================
+
+A very simple namespace autoloader.  This autoloader assumes that the include path is properly set and that the namespace mirrors the directory structure.  Simply register the autoloader with: spl_autoload_register('\\crimson\\autoload');
+
+Crimson_ExceptionHandler: A syslog friendly exception handler
+=============================================================
+
+The Crimson_ExceptionHandler is a drop-in exception handler designed to
+provide exception stack traces in a syslog friend format.
+
+The Crimson_ExceptionHandler does not force or check that PHP is logging to
+syslog.  It expects the PHP ini "error_log" setting to be "syslog" before it 
+catches an exception.  If the value is set to some other file, it will log to
+that file instead.
+
+Crimson_Json: An OO implementation of serializing objects into JSON
+=============================================================
+
+The Crimson_Json is an object orienteded implementation for json_encode and json_decode.  The added bonus is that Crimson_Json honors the Crimson_Encodable interface.  This interface works very similiar to the Serializable interface in PHP core: Crimson_Json will call the respective encode/decode method of a class that implements Crimson_Encodable instead of calling the core json_encode/json_decode functions.
+
+Example:
+class Foo implements Crimson_Encodable
+{
+    protected $_data = array('hidden' => 'data');
+
+    public function encode()
+    {
+        return json_encode($this->_data);
+    }
+
+    public function json_decode($value)
+    {
+        $this->_data = (array) json_decode($value);
+    }
+}
+
+Crimson_Memcache: A pecl/memcached backend for Zend Framework
+=============================================================
+
+Crimson_Memcache is a replacement to the Zend_Cache_Backend_Memcache class.
+It can be used wherever Zend_Cache_Backend_Memcache is able to be used.
+
+The Crimson_Memcache class provides a new public method: getCacheInstance.
+This function allows the user to extract the internal Memcached instance being
+used so they can use methods specific to memcached (such as cas and callbacks).
+
+Crimson_Url: A set of URL utilities
+=============================================================
+
+The Crimson_Url class provides a set of factory methods that take advantage of PHP5.3's new anonymous function and closure features.  This class is implemented in a way that is indepdent of the view.  This allows the code to be accessible to the service layer without compromising the functionality available to the view.
