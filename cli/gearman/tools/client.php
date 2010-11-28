@@ -87,3 +87,5 @@ echo "gearman -h {$host} -p {$port} -f {$function} '{$workload}'", PHP_EOL;
 $client = new GearmanClient;
 $client->addServer($host, $port);
 $result = $client->do($function, $workload);
+
+echo "Result: $result", PHP_EOL;
