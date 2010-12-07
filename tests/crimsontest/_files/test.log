@@ -1,13 +1,13 @@
-[09-Sep-2010 19:04:18] i hope i get handled Stack Trace:
-[09-Sep-2010 19:04:18] PHP 0. testHandle ?:?
-[09-Sep-2010 19:04:18] PHP 1. invokeArgs /usr/local/lib/php/PHPUnit/Framework/TestCase.php:822
-[09-Sep-2010 19:04:18] PHP 2. runTest /usr/local/lib/php/PHPUnit/Framework/TestCase.php:705
-[09-Sep-2010 19:04:18] PHP 3. runBare /usr/local/lib/php/PHPUnit/Framework/TestResult.php:686
-[09-Sep-2010 19:04:18] PHP 4. run /usr/local/lib/php/PHPUnit/Framework/TestCase.php:652
-[09-Sep-2010 19:04:18] PHP 5. run /usr/local/lib/php/PHPUnit/Framework/TestSuite.php:753
-[09-Sep-2010 19:04:18] PHP 6. runTest /usr/local/lib/php/PHPUnit/Framework/TestSuite.php:729
-[09-Sep-2010 19:04:18] PHP 7. run /usr/local/lib/php/PHPUnit/Framework/TestSuite.php:688
-[09-Sep-2010 19:04:18] PHP 8. run /usr/local/lib/php/PHPUnit/TextUI/TestRunner.php:349
-[09-Sep-2010 19:04:18] PHP 9. doRun /usr/local/lib/php/PHPUnit/TextUI/Command.php:213
-[09-Sep-2010 19:04:18] PHP 10. run /usr/local/lib/php/PHPUnit/TextUI/Command.php:146
-[09-Sep-2010 19:04:18] PHP 11. main /usr/local/bin/phpunit:54
+[06-Dec-2010 22:42:06] i hope i get handled Stack Trace:
+[06-Dec-2010 22:42:06] PHP 0. testHandle ?:?
+[06-Dec-2010 22:42:06] PHP 1. invokeArgs /usr/local/lib/php/PHPUnit/Framework/TestCase.php:822
+[06-Dec-2010 22:42:06] PHP 2. runTest /usr/local/lib/php/PHPUnit/Framework/TestCase.php:705
+[06-Dec-2010 22:42:06] PHP 3. runBare /usr/local/lib/php/PHPUnit/Framework/TestResult.php:686
+[06-Dec-2010 22:42:06] PHP 4. run /usr/local/lib/php/PHPUnit/Framework/TestCase.php:652
+[06-Dec-2010 22:42:06] PHP 5. run /usr/local/lib/php/PHPUnit/Framework/TestSuite.php:753
+[06-Dec-2010 22:42:06] PHP 6. runTest /usr/local/lib/php/PHPUnit/Framework/TestSuite.php:729
+[06-Dec-2010 22:42:06] PHP 7. run /usr/local/lib/php/PHPUnit/Framework/TestSuite.php:688
+[06-Dec-2010 22:42:06] PHP 8. run /usr/local/lib/php/PHPUnit/TextUI/TestRunner.php:349
+[06-Dec-2010 22:42:06] PHP 9. doRun /usr/local/lib/php/PHPUnit/TextUI/Command.php:213
+[06-Dec-2010 22:42:06] PHP 10. run /usr/local/lib/php/PHPUnit/TextUI/Command.php:146
+[06-Dec-2010 22:42:06] PHP 11. main /usr/local/bin/phpunit:54

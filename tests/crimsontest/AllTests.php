@@ -19,6 +19,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 require_once __DIR__ . '/../TestHelper.php';
 require_once __DIR__ . '/AutoloaderTest.php';
 require_once __DIR__ . '/ExceptionHandlerTest.php';
+require_once __DIR__ . '/FilterTest.php';
 require_once __DIR__ . '/JsonTest.php';
 require_once __DIR__ . '/UrlTest.php';
 require_once __DIR__ . '/extension/zend/controller/action/helper/ContentTypeTest.php';
@@ -36,6 +37,7 @@ class AllTests
 
         $suite->addTestSuite('\crimsontest\AutoloaderTest');
         $suite->addTestSuite('\crimsontest\ExceptionHandlerTest');
+        $suite->addTestSuite('\crimsontest\FilterTest');
         $suite->addTestSuite('\crimsontest\JsonTest');
         $suite->addTestSuite('\crimsontest\UrlTest');
         $suite->addTestSuite('\crimsontest\extension\zend\controller\action\helper\ContentTypeTest');
