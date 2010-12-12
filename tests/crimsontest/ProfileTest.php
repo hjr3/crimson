@@ -12,8 +12,6 @@
 
 namespace crimsontest;
 
-require_once dirname(__FILE__) . '/../TestHelper.php';
-
 require_once 'crimson/Profile.php';
 require_once 'crimson/profile/Storage.php';
 

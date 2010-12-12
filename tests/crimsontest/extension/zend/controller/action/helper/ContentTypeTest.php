@@ -12,7 +12,6 @@
 
 namespace crimsontest\extension\zend\controller\action\helper;
 
-require_once dirname(__FILE__) . '/../../../../../../TestHelper.php';
 require_once "PHPUnit/Framework/TestCase.php";
 require_once "PHPUnit/Framework/TestSuite.php";
 

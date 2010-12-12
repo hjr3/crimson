@@ -12,8 +12,6 @@
 
 namespace crimsontest;
 
-require_once dirname(__FILE__) . '/../TestHelper.php';
-
 require_once 'crimson/Json.php';
 require_once 'crimson/json/Encodable.php';
 

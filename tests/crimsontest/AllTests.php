@@ -23,7 +23,6 @@ require_once __DIR__ . '/FilterTest.php';
 require_once __DIR__ . '/JsonTest.php';
 require_once __DIR__ . '/UrlTest.php';
 require_once __DIR__ . '/ProfileTest.php';
-require_once __DIR__ . '/extension/zend/controller/action/helper/ContentTypeTest.php';
 
 class AllTests
 {
@@ -42,11 +41,13 @@ class AllTests
         $suite->addTestSuite('\crimsontest\JsonTest');
         $suite->addTestSuite('\crimsontest\UrlTest');
         $suite->addTestSuite('\crimsontest\ProfileTest');
-        $suite->addTestSuite('\crimsontest\extension\zend\controller\action\helper\ContentTypeTest');
 
         if (defined('ZENDTEST')) {
             require_once __DIR__ . '/extension/zend/cache/backend/MemcacheTest.php';
             $suite->addTestSuite('\crimsontest\extension\zend\cache\backend\MemcacheTest');
+
+            require_once __DIR__ . '/extension/zend/controller/action/helper/ContentTypeTest.php';
+            $suite->addTestSuite('\crimsontest\extension\zend\controller\action\helper\ContentTypeTest');
         }
 
         return $suite;

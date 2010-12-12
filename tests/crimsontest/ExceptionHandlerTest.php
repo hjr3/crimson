@@ -13,8 +13,6 @@
 
 namespace crimsontest;
 
-require_once __DIR__ . '/../TestHelper.php';
-
 require_once 'crimson/ExceptionHandler.php';
 
 function dummy_handler($e) {}

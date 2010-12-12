@@ -33,8 +33,6 @@
 
 namespace crimsontest\extension\zend\cache\backend;
 
-require_once dirname(__FILE__) . '/../../../../../TestHelper.php';
- 
 require_once 'crimson/extension/zend/cache/backend/Memcache.php';
 
 /**

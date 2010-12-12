@@ -12,8 +12,6 @@
 
 namespace crimsontest;
 
-require_once __DIR__ . '/../TestHelper.php';
-
 require_once 'crimson/Url.php';
 
 class UrlTest extends \PHPUnit_Framework_TestCase
