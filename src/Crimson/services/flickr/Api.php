@@ -9,7 +9,7 @@
  * @license New BSD {@link http://www.opensource.org/licenses/bsd-license.php}
  */
 
-namespace crimson\services\flickr;
+namespace Crimson\Services\Flickr;
 
 /**
  * Simple interface to the Flickr REST API

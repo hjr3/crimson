@@ -3,16 +3,17 @@
  * Crimson - component library
  *
  * @category Crimson
- * @package Crimson_Json
+ * @package Profile
  * @copyright 2010 Herman J. Radtke III
  * @author Herman J. Radtke III <hermanradtke@gmail.com>
  * @license New BSD {@link http://www.opensource.org/licenses/bsd-license.php}
  */
 
-namespace crimson\json;
+namespace Crimson\Profile;
 
-interface Encodable
+interface Storage
 {
-    public function encode();
-    public function decode($value);
+    public function saveTimer($time);
+
+    public function saveProfile($data);
 }

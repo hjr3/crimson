@@ -9,7 +9,7 @@
  * @license New BSD {@link http://www.opensource.org/licenses/bsd-license.php}
  */
 
-namespace crimson;
+namespace Crimson;
 
 /**
  * A set of utilities to for dealing with URL's.
