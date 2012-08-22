@@ -36,8 +36,7 @@ package { $php:
 
 package { "git": 
     ensure => installed,
-    provider => yum,
-    require => [Yumrepo["base"]],
+    provider => yum
 }
 
 exec { "composer":
