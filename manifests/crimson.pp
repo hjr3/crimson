@@ -17,6 +17,7 @@ package { 'remi-release':
 }
 
 yumrepo { "remi":
+    enabled => 1,
     require => Package["remi-release"],
 }
 
@@ -26,6 +27,7 @@ $php = [
     "php-common",
     "php-devel",
     "php-pear",
+    "php-pecl-xdebug",
 ]
 
 package { $php:
