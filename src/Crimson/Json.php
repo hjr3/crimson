@@ -11,6 +11,8 @@
 
 namespace Crimson;
 
+use Crimson\Json\Encodable;
+
 class Json
 {
     /**
@@ -25,7 +27,7 @@ class Json
      */
     public static function encode($value)
     {
-        if ($value instanceof json\Encodable) {
+        if ($value instanceof Encodable) {
             return $value->encode();
         }
 
@@ -40,7 +42,7 @@ class Json
      */
     public static function decode($value)
     {
-        if ($value instanceof json\Encodable) {
+        if ($value instanceof Encodable) {
             return $value->decode($value);
         }
 
