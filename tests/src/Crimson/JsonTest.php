@@ -65,7 +65,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
     public function testEncodeEncodable()
     {
         $expected = '{"inside":"encode"}';
-        $c = $this->getMock('\Crimson\Json\Encodable');
+        $c = $this->getMock('Crimson\Json\Encodable');
 
         $c->expects($this->once())
             ->method('encode')
