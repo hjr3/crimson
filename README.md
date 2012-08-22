@@ -19,6 +19,7 @@ that file instead.
 The Crimson\Json class is an object orienteded implementation for json_encode and json_decode.  The added bonus is that Crimson\Json honors the Crimson\Encodable interface.  This interface works very similiar to the Serializable interface in PHP core: Crimson\Json will call the respective encode/decode method of a class that implements Crimson\Encodable instead of calling the core json_encode/json_decode functions.
 
 Example:
+
     class Foo implements Crimson\Encodable
     {
         protected $_data = array('hidden' => 'data');
