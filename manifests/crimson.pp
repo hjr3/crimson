@@ -28,6 +28,8 @@ $php = [
     "php-devel",
     "php-pear",
     "php-pecl-xdebug",
+    "php-phpunit-PHPUnit",
+    "php-xml",
 ]
 
 package { $php:
