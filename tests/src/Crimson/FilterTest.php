@@ -10,9 +10,7 @@
  * @license New BSD {@link http://www.opensource.org/licenses/bsd-license.php}
  */
 
-namespace crimsontest;
-
-require_once 'crimson/Filter.php';
+namespace Crimson\Test;
 
 class FilterTest extends \PHPUnit_Framework_TestCase
 {
@@ -20,7 +18,7 @@ class FilterTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->Filter = new \crimson\Filter;
+        $this->Filter = new \Crimson\Filter;
     }
 
     public function testFilterReturnsInput()

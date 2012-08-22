@@ -10,16 +10,13 @@
  * @license New BSD {@link http://www.opensource.org/licenses/bsd-license.php}
  */
 
-namespace crimsontest;
-
-require_once 'crimson/Profile.php';
-require_once 'crimson/profile/Storage.php';
+namespace Crimson\Test;
 
 class ProfileTest extends \PHPUnit_Framework_TestCase
 {
     public function testTimer()
     {
-        $p = new \crimson\Profile;
+        $p = new \Crimson\Profile;
         $p->timerStart();
         foo();
         $t = $p->timerStop();
@@ -27,9 +24,15 @@ class ProfileTest extends \PHPUnit_Framework_TestCase
         $this->assertGreaterThan(0, $t);
     }
 
+    /**
+     * @skip
+     */
     public function testProfile()
     {
-        $p = new \crimson\Profile;
+        if (!function_exists('xhprof_enable')) {
+            $this->markTestSkipped('The xhprof functions are not available');
+        }
+        $p = new \Crimson\Profile;
         $p->profileStart();
         foo();
         $r = $p->profileStop();

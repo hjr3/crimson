@@ -11,9 +11,7 @@
  */
 
 
-namespace crimsontest;
-
-require_once 'crimson/ExceptionHandler.php';
+namespace Crimson\Test;
 
 function dummy_handler($e) {}
 
@@ -23,7 +21,7 @@ class ExceptionHandlerTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->ExceptionHandler = new \crimson\ExceptionHandler;
+        $this->ExceptionHandler = new \Crimson\ExceptionHandler;
     }
 
     public function tearDown()
@@ -35,9 +33,9 @@ class ExceptionHandlerTest extends \PHPUnit_Framework_TestCase
     {
         // best way i could see to determine the current exception handler
         // was to set a fake exception handler and use the return value
-        $handler = set_exception_handler('\crimsontest\dummy_handler');
+        $handler = set_exception_handler('\Crimson\Test\dummy_handler');
 
-        $this->assertTrue($handler[0] instanceof \crimson\ExceptionHandler);
+        $this->assertTrue($handler[0] instanceof \Crimson\ExceptionHandler);
         $this->assertEquals('handle', $handler[1]);
     }
 

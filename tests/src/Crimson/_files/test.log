@@ -1,0 +1,13 @@
+[21-Aug-2012 18:56:27] i hope i get handled Stack Trace:
+[21-Aug-2012 18:56:27] PHP 0. testHandle ?:?
+[21-Aug-2012 18:56:27] PHP 1. invokeArgs /usr/share/pear/PHPUnit/Framework/TestCase.php:942
+[21-Aug-2012 18:56:27] PHP 2. runTest /usr/share/pear/PHPUnit/Framework/TestCase.php:804
+[21-Aug-2012 18:56:27] PHP 3. runBare /usr/share/pear/PHPUnit/Framework/TestResult.php:649
+[21-Aug-2012 18:56:27] PHP 4. run /usr/share/pear/PHPUnit/Framework/TestCase.php:751
+[21-Aug-2012 18:56:27] PHP 5. run /usr/share/pear/PHPUnit/Framework/TestSuite.php:772
+[21-Aug-2012 18:56:27] PHP 6. runTest /usr/share/pear/PHPUnit/Framework/TestSuite.php:745
+[21-Aug-2012 18:56:27] PHP 7. run /usr/share/pear/PHPUnit/Framework/TestSuite.php:705
+[21-Aug-2012 18:56:27] PHP 8. run /usr/share/pear/PHPUnit/TextUI/TestRunner.php:325
+[21-Aug-2012 18:56:27] PHP 9. doRun /usr/share/pear/PHPUnit/TextUI/Command.php:192
+[21-Aug-2012 18:56:27] PHP 10. run /usr/share/pear/PHPUnit/TextUI/Command.php:130
+[21-Aug-2012 18:56:27] PHP 11. main /usr/bin/phpunit:46

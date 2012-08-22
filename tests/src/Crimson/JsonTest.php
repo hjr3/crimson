@@ -10,10 +10,7 @@
  * @license New BSD {@link http://www.opensource.org/licenses/bsd-license.php}
  */
 
-namespace crimsontest;
-
-require_once 'crimson/Json.php';
-require_once 'crimson/json/Encodable.php';
+namespace Crimson\Test;
 
 class JsonTest extends \PHPUnit_Framework_TestCase
 {
@@ -28,7 +25,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
 
         foreach($scalars as $scalar) {
             list($given, $expected) = $scalar;
-            $this->assertEquals($expected, \crimson\Json::encode($given));
+            $this->assertEquals($expected, \Crimson\Json::encode($given));
         }
     }
 
@@ -38,7 +35,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
 
         $expected = '[1,2,3,4,5]';
 
-        $this->assertEquals($expected, \crimson\Json::encode($given));
+        $this->assertEquals($expected, \Crimson\Json::encode($given));
 
         $given = array(
             'a' => 1,
@@ -50,7 +47,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
 
         $expected = '{"a":1,"0":5,"1":false,"2":"trouble at mill","foo":"bar"}';
 
-        $this->assertEquals($expected, \crimson\Json::encode($given));
+        $this->assertEquals($expected, \Crimson\Json::encode($given));
     }
 
     public function testEncodeStdClass()
@@ -62,19 +59,19 @@ class JsonTest extends \PHPUnit_Framework_TestCase
 
         $expected = '{"p":"hp","x":1,"status":false}';
 
-        $this->assertEquals($expected, \crimson\Json::encode($given));
+        $this->assertEquals($expected, \Crimson\Json::encode($given));
     }
 
     public function testEncodeEncodable()
     {
         $expected = '{"inside":"encode"}';
-        $c = $this->getMock('\crimson\json\Encodable');
+        $c = $this->getMock('\Crimson\Json\Encodable');
 
         $c->expects($this->once())
             ->method('encode')
             ->will($this->returnValue($expected));
 
-        $this->assertEquals($expected, \crimson\Json::encode($c));
+        $this->assertEquals($expected, \Crimson\Json::encode($c));
     }
 
     public function testDecodeScalars()
@@ -88,7 +85,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
 
         foreach($scalars as $scalar) {
             list($given, $expected) = $scalar;
-            $this->assertEquals($expected, \crimson\Json::decode($given));
+            $this->assertEquals($expected, \Crimson\Json::decode($given));
         }
     }
 
@@ -98,11 +95,11 @@ class JsonTest extends \PHPUnit_Framework_TestCase
 
         $expected = array(1,2,3,4,5);
 
-        $this->assertEquals($expected, \crimson\Json::decode($given));
+        $this->assertEquals($expected, \Crimson\Json::decode($given));
 
         $given = '{"a":1,"0":5,"1":false,"2":"trouble at mill","foo":"bar"}';
 
-        $result = \crimson\Json::decode($given);
+        $result = \Crimson\Json::decode($given);
 
         $this->assertAttributeEquals(1, 'a', $result);
         $this->assertAttributeEquals(5, '0', $result);
@@ -115,7 +112,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
     {
         $given = '{"p":"hp","x":1,"status":false}';
 
-        $result = \crimson\Json::decode($given);
+        $result = \Crimson\Json::decode($given);
 
         $this->assertAttributeEquals('hp', 'p', $result);
         $this->assertAttributeEquals(1, 'x', $result);
@@ -130,12 +127,12 @@ class JsonTest extends \PHPUnit_Framework_TestCase
     public function testDecodeEncodable()
     {
         $expected = true;
-        $c = $this->getMock('\crimson\json\Encodable');
+        $c = $this->getMock('\Crimson\Json\Encodable');
 
         $c->expects($this->once())
             ->method('decode')
             ->will($this->returnValue($expected));
 
-        $this->assertEquals($expected, \crimson\Json::decode($c));
+        $this->assertEquals($expected, \Crimson\Json::decode($c));
     }
 } 

@@ -71,7 +71,7 @@ class Profile
     {
         // don't profile internal php functions
         // show memory output
-        xhprof_enable(XHPROF_FLAGS_NO_BUILTINS | XHPROF_FLAGS_MEMORY);
+        \xhprof_enable(XHPROF_FLAGS_NO_BUILTINS | XHPROF_FLAGS_MEMORY);
         $this->xhprof_on = true;
     }
 

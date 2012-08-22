@@ -10,9 +10,7 @@
  * @license New BSD {@link http://www.opensource.org/licenses/bsd-license.php}
  */
 
-namespace crimsontest;
-
-require_once 'crimson/services/flickr/Api.php';
+namespace Crimson\Test;
 
 class ApiTest extends \PHPUnit_Framework_TestCase
 {
@@ -22,7 +20,7 @@ class ApiTest extends \PHPUnit_Framework_TestCase
 
     public function testRequestBadReturnsFalse()
     {
-        $flickr = $this->getMock('\crimson\services\flickr\Api', array('send'), array($this->api_key));
+        $flickr = $this->getMock('\Crimson\services\flickr\Api', array('send'), array($this->api_key));
 
         $response = $flickr->request('method', array());
 
@@ -40,7 +38,7 @@ class ApiTest extends \PHPUnit_Framework_TestCase
 
     public function testGetLastUrl()
     {
-        $flickr = $this->getMock('\crimson\services\flickr\Api', array('send'), array($this->api_key));
+        $flickr = $this->getMock('\Crimson\services\flickr\Api', array('send'), array($this->api_key));
 
         $this->assertEquals('', $flickr->getLastUrl());
 
