@@ -22,10 +22,14 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "facebook/xhprof": "dev-master"
+        "facebook/xhprof": "dev-master",
+        "phing/phing": "*"
     },
     "require-dev": {
-            "phpunit/phpunit": "3.7.*"
+            "phpunit/phpunit": "3.7.*",
+            "pdepend/pdepend": "1.1.0",
+            "phpmd/phpmd": "*",
+            "fabpot/php-cs-fixer": "*"
     },
     "autoload": {
         "psr-0": {

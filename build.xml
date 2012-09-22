@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<project name="Crimson" basedir="." default="test">
+    <target name="test">
+        <phingcall target="test-unit"></phingcall>
+
+        <phingcall target="test-style"></phingcall>
+    </target>
+
+    <target name="test-unit">
+        <exec dir="tests" command="../vendor/bin/phpunit --configuration phpunit.xml --coverage-text; echo ''" passthru="true" />
+    </target>
+
+    <target name="test-style">
+        <phpmd rulesets="codesize,unusedcode,naming">
+            <fileset dir=".">
+                <include name="src/**/*.php" />
+            </fileset>
+        </phpmd>
+
+        <echo msg="[php-cs-fixer] Processing files..." />
+        <exec command="./vendor/bin/php-cs-fixer --verbose fix src/ --level=all --dry-run; echo ''" passthru="true" />
+        <echo msg="[php-cs-fixer] Finished processing files." />
+    </target>
+
+    <target name="travis">
+        <phplint haltonfailure="true">
+            <fileset dir=".">
+                <include name="src/**/*.php" />
+            </fileset>
+        </phplint>
+
+        <phingcall target="test"></phingcall>
+    </target>
+</project>
