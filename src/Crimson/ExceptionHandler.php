@@ -28,7 +28,7 @@ class ExceptionHandler
      * to be cut off before showing where the exception occurred.  This handler
      * logs each line of the trace as a seperate entry in syslog using a format
      * very similar to xdebug.
-     * 
+     *
      * @param Exception $e Uncaught exception object.
      */
     public function handle(\Exception $e)

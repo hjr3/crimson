@@ -22,7 +22,7 @@ namespace Crimson\Services\Flickr;
  *
  * The last url requested is saved in the class instance so a the results
  * can be cached by the complete url requested.
- * 
+ *
  */
 class Api
 {
@@ -30,13 +30,13 @@ class Api
      * The Flickr REST endpoint
      *
      * This entire class is built on the assumption that a REST endpoint is
-     * being used. 
+     * being used.
      */
     const url = 'http://api.flickr.com/services/rest/';
 
     /**
      * Flickr API key
-     * 
+     *
      * @var string
      */
     protected $api_key;
@@ -45,14 +45,14 @@ class Api
      * The last url requested
      *
      * This allows outside caches to easily get a key to cache the results.
-     * 
+     *
      * @var string
      */
     protected $last_url;
 
     /**
      * Constructor
-     * 
+     *
      * @param string $api_key Flickr API key
      */
     public function __construct($api_key)
@@ -63,9 +63,9 @@ class Api
 
     /**
      * Make a request to the Flickr API
-     * 
-     * @param string $method Flickr method to call
-     * @param array $params List of parameters specific to the Flickr method
+     *
+     * @param  string       $method Flickr method to call
+     * @param  array        $params List of parameters specific to the Flickr method
      * @return string|false A json encoded response on success, else false.
      */
     public function request($method, array $params=array())
@@ -91,9 +91,9 @@ class Api
 
     /**
      * Glue together a url and list query parameters
-     * 
-     * @param string $method Flickr method to call
-     * @param array $params List of parameters specific to the Flickr method
+     *
+     * @param  string $method Flickr method to call
+     * @param  array  $params List of parameters specific to the Flickr method
      * @return string The complete url
      */
     protected function buildUrl($method, array $params)
@@ -116,8 +116,8 @@ class Api
 
     /**
      * Send a GET request via cUrl
-     * 
-     * @param string $url The url to make a request with
+     *
+     * @param  string $url The url to make a request with
      * @return string cUrl response string
      */
     protected function send($url)

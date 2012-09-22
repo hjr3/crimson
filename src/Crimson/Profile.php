@@ -11,26 +11,26 @@
 
 namespace Crimson;
 
-class Profile 
+class Profile
 {
     /**
      * Object used to storage results of profiling
-     * 
+     *
      * @var ProfileStorage
      */
     protected $storage;
 
     /**
      * Value of the timer when it was first started
-     * 
+     *
      * @var float
      */
     protected $time_start;
 
     /**
      * Store an instance of ProfileStorage
-     * 
-     * @param ProfileStorage $storage 
+     *
+     * @param ProfileStorage $storage
      */
     public function setStorage(profile\Storage $storage)
     {
@@ -49,7 +49,7 @@ class Profile
      * Stop a timer and return result.
      *
      * Don't reset @link($time_start} so incremental times can be taken.
-     * 
+     *
      * @return float The sec.msec time between start and stop
      */
     public function timerStop()
@@ -77,7 +77,7 @@ class Profile
 
     /**
      * Stop profiling and save and/or return results.
-     * 
+     *
      * @return array Profiling results
      */
     public function profileStop()

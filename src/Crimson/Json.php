@@ -19,11 +19,11 @@ class Json
      * Serialize a value into JSON.
      *
      * This method honors the Encoable interface.  If an object implements this
-     * interface, the object's encode method will be used to serialize the 
+     * interface, the object's encode method will be used to serialize the
      * object.
-     * 
-     * @param Encodable|mixed $value The value to serialize into JSON.
-     * @return mixed|false The serialized JSON object or false on error.
+     *
+     * @param  Encodable|mixed $value The value to serialize into JSON.
+     * @return mixed|false     The serialized JSON object or false on error.
      */
     public static function encode($value)
     {
@@ -36,8 +36,8 @@ class Json
 
     /**
      * Decode a JSON string into the appropriate php type.
-     * 
-     * @param mixed $value The value to decode.
+     *
+     * @param  mixed      $value The value to decode.
      * @return mixed|null The php value or null if value cannot be decoded.
      */
     public static function decode($value)
