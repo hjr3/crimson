@@ -29,21 +29,21 @@ class ExceptionHandler
      * logs each line of the trace as a seperate entry in syslog using a format
      * very similar to xdebug.
      *
-     * @param Exception $e Uncaught exception object.
+     * @param Exception $exception Uncaught exception object.
      */
-    public function handle(\Exception $e)
+    public function handle(\Exception $exception)
     {
-        $m = "{$e->getMessage()} Stack Trace:";
-        error_log($m);
+        $msg = "{$exception->getMessage()} Stack Trace:";
+        error_log($msg);
 
-        $trace = $e->getTrace();
+        $trace = $exception->getTrace();
         foreach ($trace as $k => $l) {
             // these keys do not always exist
             $file = isset($l['file']) ? $l['file'] : '?';
             $line = isset($l['line']) ? $l['line'] : '?';
 
-            $m = "PHP {$k}. {$l['function']} {$file}:{$line}";
-            error_log($m);
+            $msg = "PHP {$k}. {$l['function']} {$file}:{$line}";
+            error_log($msg);
         }
     }
 }

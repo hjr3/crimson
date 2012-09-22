@@ -58,7 +58,7 @@ class Profile
         $total = $end - $this->time_start;
 
         if ($this->storage) {
-            $this->storage->saveTimer($data);
+            $this->storage->saveTimer();
         }
 
         return $total;

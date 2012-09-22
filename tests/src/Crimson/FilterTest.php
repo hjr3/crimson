@@ -31,7 +31,7 @@ class FilterTest extends \PHPUnit_Framework_TestCase
             'foo' => FILTER_SANITIZE_STRING,
         );
 
-        $input = $this->Filter->filter($data, $def);
+        $input = $this->Filter->filterVarArray($data, $def);
 
         $expected = array(
             'foo' => 'bar',
@@ -50,7 +50,7 @@ class FilterTest extends \PHPUnit_Framework_TestCase
             'foo' => FILTER_VALIDATE_INT,
         );
 
-        $input = $this->Filter->filter($data, $def);
+        $input = $this->Filter->filterVarArray($data, $def);
 
         $this->assertFalse($input);
     }
@@ -67,7 +67,7 @@ class FilterTest extends \PHPUnit_Framework_TestCase
 
         $optional = array('foo');
 
-        $input = $this->Filter->filter($data, $def, $optional);
+        $input = $this->Filter->filterVarArray($data, $def, $optional);
 
         $expected = array(
             'foo' => null,
@@ -90,7 +90,7 @@ class FilterTest extends \PHPUnit_Framework_TestCase
             'email' => FILTER_VALIDATE_EMAIL,
         );
 
-        $input = $this->Filter->filter($data, $def);
+        $input = $this->Filter->filterVarArray($data, $def);
 
         $expected = array(
             'foo' => 'bar',
@@ -117,7 +117,7 @@ class FilterTest extends \PHPUnit_Framework_TestCase
 
         $optional = array('email');
 
-        $input = $this->Filter->filter($data, $def, $optional);
+        $input = $this->Filter->filterVarArray($data, $def, $optional);
 
         $expected = array(
             'foo' => 'bar',
@@ -144,7 +144,7 @@ class FilterTest extends \PHPUnit_Framework_TestCase
 
         $optional = array('baz');
 
-        $input = $this->Filter->filter($data, $def, $optional);
+        $input = $this->Filter->filterVarArray($data, $def, $optional);
 
         $this->assertFalse($input);
     }

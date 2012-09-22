@@ -28,7 +28,7 @@ class Filter
      * @param  array       $optional   Array of keys that are optional.
      * @return false|array Filtered array on success, otherwise false.
      */
-    public function filter(array $data, array $definition, array $optional=array())
+    public function filterVarArray(array $data, array $definition, array $optional=array())
     {
         $input = filter_var_array($data, $definition);
 
