@@ -26,9 +26,7 @@ $php = [
     "php-cli",
     "php-common",
     "php-devel",
-    "php-pear",
     "php-pecl-xdebug",
-    "php-phpunit-PHPUnit",
     "php-xml",
 ]
 
