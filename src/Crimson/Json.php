@@ -28,7 +28,6 @@ class Json
     public static function encode($value)
     {
         if ($value instanceof Encodable) {
-            var_dump(class_implements($value), method_exists($value, 'encode'), $value);
             return $value->encode();
         }
 
